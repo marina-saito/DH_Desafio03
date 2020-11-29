@@ -1,5 +1,6 @@
 package com.example.desafio03.ui
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.bumptech.glide.Glide
@@ -30,6 +31,11 @@ class DetailsActivity : AppCompatActivity() {
         tvPrice.text = "$"+price
         tvPages.text = pages
 
+        ivComic.setOnClickListener {
+            val intent = Intent(this@DetailsActivity, FullScreenActivity::class.java)
+            intent.putExtra("img", img)
+            startActivity(intent)
+        }
 
     }
 }
