@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:gravity="center">
+            <include layout="@layout/layout_email_pwd"/>
+            <com.google.android.material.checkbox.MaterialCheckBox
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/remember"
+                android:checked="true"
+                android:buttonTint="@color/marvel_red"
+                android:textColor="@color/black"/>
+            <com.google.android.material.button.MaterialButton
+                android:layout_marginTop="20dp"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:text="@string/btn_log_in"
+                android:fontFamily="@font/roboto"
+                android:textColor="@color/white"
+                android:textSize="16dp"
+                android:backgroundTint="@color/marvel_red"
+                app:cornerRadius="3dp"/>
+            <TextView
+                android:layout_marginTop="8dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/create_account"
+                android:gravity="center"
+                android:fontFamily="@font/roboto_light"
+                android:textColor="@color/grey_letter"
+                android:textSize="16dp"/>
+
+
+        </LinearLayout>
+
+</merge>

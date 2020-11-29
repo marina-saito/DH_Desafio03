@@ -1,107 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
+<LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ui.LoginActivity"
-    android:background="@color/background">
+    android:background="@color/background"
+    android:orientation="vertical">
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="400dp"
-        android:background="@drawable/pill_shape"
-        android:backgroundTint="@color/marvel_red"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:layout_margin="15dp"
-        android:orientation="vertical">
-        <TextView
-            android:id="@+id/tvWelcome"
-            android:layout_width="match_parent"
-            android:layout_height="65dp"
-            android:text="@string/welcome"
-            android:textColor="@color/white"
-            android:textSize="22dp"
-            android:gravity="center"/>
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="fill_parent"
-            android:background="@drawable/pill_shape"
-            android:backgroundTint="@color/white"
-            android:paddingHorizontal="15dp"
-            android:paddingVertical="30dp"
-            android:orientation="vertical"
-            android:gravity="center">
-            <com.google.android.material.textfield.TextInputLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textColorHint="@color/marvel_red"
-                app:placeholderText="@string/email_example"
-                app:placeholderTextColor="@color/black"
-                app:boxBackgroundMode="filled"
-                app:boxStrokeColor="@color/marvel_red">
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/etEmail"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:hint="@string/email"
-                    android:background="@android:color/transparent"
-                    app:boxBackgroundColor="@android:color/transparent"
-                    android:textColor="@color/black"/>
-            </com.google.android.material.textfield.TextInputLayout>
-            <com.google.android.material.textfield.TextInputLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"
-                android:textColorHint="@color/marvel_red"
-                app:placeholderText="@string/pwd_example"
-                app:placeholderTextColor="@color/black"
-                app:boxBackgroundMode="filled"
-                app:boxStrokeColor="@color/marvel_red">
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/etPwd"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:hint="@string/password"
-                    android:inputType="textPassword"
-                    android:background="@android:color/transparent"
-                    app:boxBackgroundColor="@android:color/transparent"
-                    android:textColor="@color/black"/>
-            </com.google.android.material.textfield.TextInputLayout>
-            <com.google.android.material.checkbox.MaterialCheckBox
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/remember"
-                android:checked="true"
-                android:buttonTint="@color/marvel_red"
-                android:textColor="@color/black"/>
-            <com.google.android.material.button.MaterialButton
-                android:layout_marginTop="20dp"
-                android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:text="@string/btn_log_in"
-                android:fontFamily="@font/roboto"
-                android:textColor="@color/white"
-                android:textSize="16dp"
-                android:backgroundTint="@color/marvel_red"
-                app:cornerRadius="3dp"/>
-            <TextView
-                android:layout_marginTop="8dp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/create_account"
-                android:gravity="center"
-                android:fontFamily="@font/roboto_light"
-                android:textColor="@color/grey_letter"
-                android:textSize="16dp"/>
-
-
-        </LinearLayout>
-
+        android:layout_height="fill_parent"
+        android:gravity="center">
+<!--        <fragment-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="match_parent"-->
+<!--            android:name="androidx.navigation.fragment.NavHostFragment"/>-->
+        <include layout="@layout/layout_initial"/>
     </LinearLayout>
 
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+</LinearLayout>
