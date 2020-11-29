@@ -1,4 +1,11 @@
 <resources>
     <string name="app_name">Desafio03</string>
     <string name="welcome">Welcome to the Marvel HQ\'s</string>
+    <string name="email">Email</string>
+    <string name="email_example">tairo@digitalhouse.com</string>
+    <string name="password">Password</string>
+    <string name="pwd_example">***************</string>
+    <string name="remember">Remember</string>
+    <string name="btn_log_in">LOG IN</string>
+    <string name="create_account">Create account</string>
 </resources>

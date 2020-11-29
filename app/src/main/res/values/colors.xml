@@ -9,4 +9,7 @@
     <color name="white">#FFFFFFFF</color>
     <color name="background">#00162C</color>
     <color name="marvel_red">#EA2427</color>
+    <color name="marvel_darkred">#BB1C1F</color>
+    <color name="mtrl_textinput_default_box_stroke_color">#C0CCDA</color>
+    <color name="grey_letter">#343F4B</color>
 </resources>
