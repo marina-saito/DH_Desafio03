@@ -11,13 +11,24 @@ import com.example.desafio03.R
 import com.example.desafio03.entities.Comic
 import kotlinx.android.synthetic.main.item_recycler.view.*
 
-class ComicAdapter(): RecyclerView.Adapter<ComicAdapter.ComicViewHolder>() {
+class ComicAdapter(val listener: OnClickComicListener): RecyclerView.Adapter<ComicAdapter.ComicViewHolder>() {
 
     var listComic = ArrayList<Comic>()
 
-    class ComicViewHolder(view: View): RecyclerView.ViewHolder(view) {
+    inner class ComicViewHolder(view: View): RecyclerView.ViewHolder(view), View.OnClickListener {
         val ivRecycler: ImageView = view.ivRecycler
         val tvRecycler: TextView = view.tvRecycler
+
+        init {
+            view.setOnClickListener(this)
+        }
+
+        override fun onClick(v: View?) {
+            val position = adapterPosition
+            if(position != RecyclerView.NO_POSITION) {
+                listener.onClickComic(position)
+            }
+        }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ComicViewHolder {
@@ -38,5 +49,9 @@ class ComicAdapter(): RecyclerView.Adapter<ComicAdapter.ComicViewHolder>() {
     fun addList(list: List<Comic>) {
         listComic.addAll(list)
         notifyDataSetChanged()
+    }
+
+    interface OnClickComicListener {
+        fun onClickComic(position:Int)
     }
 }

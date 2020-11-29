@@ -1,7 +1,9 @@
 package com.example.desafio03.ui
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.telecom.Call
 import android.util.Log
 import androidx.activity.viewModels
 import androidx.lifecycle.ViewModel
@@ -13,7 +15,7 @@ import com.example.desafio03.entities.Comic
 import com.example.desafio03.service.service
 import kotlinx.android.synthetic.main.activity_main.*
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity(), ComicAdapter.OnClickComicListener {
 
     lateinit var adapterComic : ComicAdapter
     lateinit var layoutManager : GridLayoutManager
@@ -30,7 +32,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        adapterComic = ComicAdapter()
+        adapterComic = ComicAdapter(this)
         layoutManager = GridLayoutManager(this, 3)
         rvComics.adapter = adapterComic
         rvComics.layoutManager = layoutManager
@@ -66,5 +68,27 @@ class MainActivity : AppCompatActivity() {
                 }
             }
         })
+    }
+
+    override fun onClickComic(position: Int) {
+        var comic = viewModel.listResults.value?.get(position)
+        var date: String = ""
+        var price: Double = 0.0
+        comic?.dates?.forEach{
+            if (it.type == "onsaleDate") { date = it.date }
+        }
+        comic?.prices?.forEach{
+            if (it.type == "printPrice") { price = it.price }
+        }
+        val intent = Intent(this@MainActivity, DetailsActivity::class.java)
+        if (comic != null) {
+            intent.putExtra("img", comic.images[0].path+"."+comic.images[0].extension)
+            intent.putExtra("title", comic.title)
+            intent.putExtra("description", comic.description)
+            intent.putExtra("date", date)
+            intent.putExtra("price", price.toString())
+            intent.putExtra("pages", comic.pageCount.toString())
+        }
+        startActivity(intent)
     }
 }
