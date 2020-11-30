@@ -8,4 +8,7 @@
     <string name="remember">Remember</string>
     <string name="btn_log_in">LOG IN</string>
     <string name="create_account">Create account</string>
+    <string name="name">Name</string>
+    <string name="name_example">DigitalHouse Brasil</string>
+    <string name="btn_register">SAVE</string>
 </resources>
