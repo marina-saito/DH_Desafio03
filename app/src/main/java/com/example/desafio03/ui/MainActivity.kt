@@ -91,4 +91,10 @@ class MainActivity : AppCompatActivity(), ComicAdapter.OnClickComicListener {
         }
         startActivity(intent)
     }
+
+    override fun onBackPressed() {
+        val intent = Intent(this, LoginActivity::class.java)
+        finish()
+        startActivity(intent)
+    }
 }
