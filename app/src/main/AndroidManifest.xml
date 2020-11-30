@@ -12,6 +12,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Desafio03"
         android:usesCleartextTraffic="true">
+        <activity android:name=".ui.CreateAccountActivity"></activity>
         <activity android:name=".ui.FullScreenActivity"></activity>
         <activity
             android:name=".ui.DetailsActivity"

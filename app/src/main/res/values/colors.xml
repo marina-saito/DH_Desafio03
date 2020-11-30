@@ -12,4 +12,5 @@
     <color name="marvel_darkred">#BB1C1F</color>
     <color name="mtrl_textinput_default_box_stroke_color">#C0CCDA</color>
     <color name="grey_letter">#343F4B</color>
+    <color name="light_grey">#EFF2F5</color>
 </resources>

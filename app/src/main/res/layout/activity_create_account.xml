@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.CreateAccountActivity"
+    android:background="@color/background"
+    android:orientation="vertical">
+
+    <com.google.android.material.appbar.MaterialToolbar
+        android:id="@+id/registerToolbar"
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:navigationIcon="@drawable/ic_arrow_back"
+        app:title="Register"
+        app:titleTextColor="@color/white"
+        android:background="@color/marvel_red"
+        android:layout_gravity="center_vertical"
+        android:paddingVertical="8dp"/>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="fill_parent"
+        android:layout_gravity="center">
+        <include layout="@layout/layout_initial"/>
+        <include layout="@layout/layout_register"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="500dp"
+            android:gravity="center_horizontal"
+            android:orientation="vertical"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent">
+            <LinearLayout
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:background="@drawable/circle">
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:padding="15dp"
+                    android:src="@drawable/ic_person_add"
+                    app:tint="@color/black"/>
+            </LinearLayout>
+        </LinearLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</LinearLayout>
