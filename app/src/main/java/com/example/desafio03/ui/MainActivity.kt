@@ -72,20 +72,15 @@ class MainActivity : AppCompatActivity(), ComicAdapter.OnClickComicListener {
 
     override fun onClickComic(position: Int) {
         var comic = viewModel.listResults.value?.get(position)
-        var date: String = ""
-        var price: Double = 0.0
-        comic?.dates?.forEach{
-            if (it.type == "onsaleDate") { date = it.date }
-        }
-        comic?.prices?.forEach{
-            if (it.type == "printPrice") { price = it.price }
-        }
         val intent = Intent(this@MainActivity, DetailsActivity::class.java)
         if (comic != null) {
-            intent.putExtra("img", comic.images[0].path+"."+comic.images[0].extension)
+            val dateOnSale: String = comic.getDate()
+            val price: Double = comic.getPrice()
+            val imgURL = comic.getImgUrl()
+            intent.putExtra("img", imgURL)
             intent.putExtra("title", comic.title)
             intent.putExtra("description", comic.description)
-            intent.putExtra("date", date)
+            intent.putExtra("date", dateOnSale)
             intent.putExtra("price", price.toString())
             intent.putExtra("pages", comic.pageCount.toString())
         }
