@@ -1,25 +1,25 @@
 package com.example.desafio03.service
 
-import com.example.desafio03.entities.Comic
-import com.example.desafio03.entities.JsonMarvel
 //import com.example.desafio03.entities.JsonMarvel
+
+import com.example.desafio03.entities.JsonMarvel
+import com.google.gson.GsonBuilder
 import retrofit2.Retrofit
-import com.google.gson.JsonObject
-import org.json.JSONObject
 import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.http.GET
 import retrofit2.http.Query
 
+
 // Endpoint
 interface Service {
     @GET("characters/1009610/comics")
-    suspend fun getComics (
+    suspend fun getComics(
             @Query("orderBy") orderBy: String,
             @Query("offset") offset: Int,
             @Query("limit") limit: Int,
             @Query("ts") ts: Int,
-            @Query("apikey") apikey:String,
-            @Query("hash") hash:String
+            @Query("apikey") apikey: String,
+            @Query("hash") hash: String
     ): JsonMarvel
 }
 
