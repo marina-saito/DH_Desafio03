@@ -18,19 +18,22 @@ class MainViewModel(val service: Service): ViewModel() {
     var listResults = MutableLiveData<List<Comic>>()
 
     fun popList(offset: Int, limit: Int) {
+        val startTime =   System.nanoTime()
+        //Log.i("Inicio popList", " +  ${((System.nanoTime()-startTime)/1000000)}")
         viewModelScope.launch{
+            //Log.i("Inicio Scope", " +  ${((System.nanoTime()-startTime)/1000000)}")
             val jsonMarvel = service.getComics(
                 "issueNumber",
                 offset,
                 limit,
-                1,
-                "6eb7e8896ec5850c52515a8a23ee97f0",
-                "40a3aa568bb269dfad85ae0c4a297181"
+                2901,
+                "bd3824e8d6525bd0cd6f7e533dd7b322",
+                "14f117b5a14c58b760752ad202e7e617"
             )
+            //Log.i("Fim requisicao", " +  ${((System.nanoTime()-startTime)/1000000)}")
             listResults.value = jsonMarvel.data.results
-            //val results = jsonMarvel.get("data").asJsonObject.get("results").asJsonObject
-            //val comics = Gson().fromJson(results, object: TypeToken<List<Comic>>(){}.type) as List<Comic>
-            Log.i("XXXXX", jsonMarvel.data.results[0].toString())
+            //Log.i("Atualizado mutable", " +  ${((System.nanoTime()-startTime)/1000000)}")
+            //Log.i("XXXXX", jsonMarvel.data.results[0].toString())
         }
     }
 
