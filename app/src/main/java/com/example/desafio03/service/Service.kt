@@ -1,9 +1,6 @@
 package com.example.desafio03.service
 
-//import com.example.desafio03.entities.JsonMarvel
-
 import com.example.desafio03.entities.JsonMarvel
-import com.google.gson.GsonBuilder
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.http.GET

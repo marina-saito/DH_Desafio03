@@ -19,7 +19,7 @@ class Comic(
         val pageCount: Int,
         val dates: List<DateMarvel>,
         val prices: List<Price>,
-        val images: List<MarvelImage>
+        val thumbnail: MarvelImage
 ){
     fun getDate(): String {
         var dateFmt: String = ""
@@ -38,13 +38,13 @@ class Comic(
         return price
     }
     fun getImgUrl(): String {
-        return images[0].path+"."+images[0].extension
+        return thumbnail.path+"."+thumbnail.extension
     }
     override fun toString(): String {
         if (description == null) {
             description = "Sorry, no description available"
         }
-        return "id: $id \ntitle: $title \ndescription: $description \npages: $pageCount\ndate: ${this.getDate()} \nprice: ${getPrice()}\nimgURL: ${images[0].path+"."+images[0].extension}"
+        return "id: $id \ntitle: $title \ndescription: $description \npages: $pageCount\ndate: ${this.getDate()} \nprice: ${getPrice()}\nimgURL: ${this.getImgUrl()}"
     }
 
 }

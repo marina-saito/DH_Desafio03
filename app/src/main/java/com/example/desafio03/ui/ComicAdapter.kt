@@ -39,7 +39,7 @@ class ComicAdapter(val listener: OnClickComicListener): RecyclerView.Adapter<Com
     override fun onBindViewHolder(holder: ComicViewHolder, position: Int) {
         var comic = listComic[position]
         Glide.with(holder.itemView).asBitmap()
-            .load(comic.images[0].path+"."+comic.images[0].extension)
+            .load(comic.getImgUrl())
             .into(holder.ivRecycler)
         holder.tvRecycler.text = "#${comic.id}"
     }
