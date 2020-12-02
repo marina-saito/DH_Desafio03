@@ -1,6 +1,6 @@
 package com.example.desafio03.service
 
-import com.example.desafio03.entities.JsonMarvel
+import com.google.gson.JsonObject
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.http.GET
@@ -17,7 +17,7 @@ interface Service {
             @Query("ts") ts: Int,
             @Query("apikey") apikey: String,
             @Query("hash") hash: String
-    ): JsonMarvel
+    ): JsonObject
 }
 
 // url
