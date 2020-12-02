@@ -9,6 +9,9 @@ import androidx.navigation.fragment.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupWithNavController
 import com.example.desafio03.R
+import kotlinx.android.synthetic.main.fragment_details.*
+import kotlinx.android.synthetic.main.fragment_home.view.*
+import kotlinx.android.synthetic.main.fragment_register.*
 import kotlinx.android.synthetic.main.fragment_register.view.*
 import kotlinx.android.synthetic.main.layout_register.*
 
@@ -29,11 +32,10 @@ class RegisterFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        view.registerToolbar.navigationIcon?.setTint(resources.getColor(R.color.white))
-        view.registerToolbar.navigationIcon?.alpha = 255
-
         btnRegister.setOnClickListener {
             findNavController().navigate(R.id.action_registerFragment_to_homeFragment)
+            registerToolbar.title = null
+            registerToolbar.navigationIcon = null
         }
     }
 

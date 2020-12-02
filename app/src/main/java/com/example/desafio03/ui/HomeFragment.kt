@@ -14,6 +14,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.desafio03.R
 import com.example.desafio03.service.service
 import kotlinx.android.synthetic.main.fragment_home.*
+import kotlinx.android.synthetic.main.fragment_home.view.*
 
 class HomeFragment : Fragment(), ComicAdapter.OnClickComicListener {
 
@@ -32,7 +33,7 @@ class HomeFragment : Fragment(), ComicAdapter.OnClickComicListener {
                               savedInstanceState: Bundle?): View? {
         // Inflate the layout for this fragment
         val view: View = inflater.inflate(R.layout.fragment_home, container, false)
-
+        view.homeToolbar.title = null
         return view
     }
 
