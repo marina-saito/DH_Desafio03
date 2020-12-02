@@ -57,8 +57,6 @@ class DetailsFragment : Fragment() {
         }
 
         view.detailsToolbar.title = null
-        view.detailsToolbar.navigationIcon?.setTint(resources.getColor(R.color.white))
-        view.detailsToolbar.navigationIcon?.alpha = 255
     }
 
 }
