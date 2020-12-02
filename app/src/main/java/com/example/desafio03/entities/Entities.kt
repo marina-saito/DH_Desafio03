@@ -2,24 +2,14 @@ package com.example.desafio03.entities
 
 import java.text.SimpleDateFormat
 
-
-data class JsonMarvel(
-        val data: Data
-)
-
-data class Data(
-        val offset: Int,
-        val results: ArrayList<Comic>
-)
-
 class Comic(
-        val id: Int,
-        val title: String,
-        var description: String,
-        val pageCount: Int,
-        val dates: List<DateMarvel>,
-        val prices: List<Price>,
-        val thumbnail: MarvelImage
+    val id: Int,
+    val title: String,
+    var description: String,
+    val pageCount: Int,
+    val dates: List<DateMarvel>,
+    val prices: List<Price>,
+    val thumbnail: MarvelImage
 ){
     fun getDate(): String {
         var dateFmt: String = ""

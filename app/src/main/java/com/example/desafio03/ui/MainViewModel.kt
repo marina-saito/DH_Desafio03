@@ -19,9 +19,9 @@ class MainViewModel(val service: Service): ViewModel() {
 
     fun popList(offset: Int, limit: Int) {
         val startTime =   System.nanoTime()
-        //Log.i("Inicio popList", " +  ${((System.nanoTime()-startTime)/1000000)}")
+        Log.i("Inicio popList", " +  ${((System.nanoTime()-startTime)/1000000)}")
         viewModelScope.launch{
-            //Log.i("Inicio Scope", " +  ${((System.nanoTime()-startTime)/1000000)}")
+            Log.i("Inicio Scope", " +  ${((System.nanoTime()-startTime)/1000000)}")
             val jsonMarvel = service.getComics(
                 "issueNumber",
                 offset,
@@ -30,9 +30,11 @@ class MainViewModel(val service: Service): ViewModel() {
                 "bd3824e8d6525bd0cd6f7e533dd7b322",
                 "14f117b5a14c58b760752ad202e7e617"
             )
-            //Log.i("Fim requisicao", " +  ${((System.nanoTime()-startTime)/1000000)}")
-            listResults.value = jsonMarvel.data.results
-            //Log.i("Atualizado mutable", " +  ${((System.nanoTime()-startTime)/1000000)}")
+            Log.i("Fim requisicao", " +  ${((System.nanoTime()-startTime)/1000000)}")
+            val results= jsonMarvel.get("data").asJsonObject.get("results")
+            val comics = Gson().fromJson(results, object : TypeToken<List<Comic>>(){}.type) as List<Comic>
+            listResults.value = comics
+            Log.i("Atualizado mutable", " +  ${((System.nanoTime()-startTime)/1000000)}")
             //Log.i("XXXXX", jsonMarvel.data.results[0].toString())
         }
     }
