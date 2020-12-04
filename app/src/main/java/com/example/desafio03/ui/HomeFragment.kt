@@ -1,11 +1,13 @@
 package com.example.desafio03.ui
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
@@ -29,11 +31,22 @@ class HomeFragment : Fragment(), ComicAdapter.OnClickComicListener {
         }
     }
 
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+
+
+        viewModel.popList(0,15)
+
+        //setScroller()
+    }
+
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
         // Inflate the layout for this fragment
         val view: View = inflater.inflate(R.layout.fragment_home, container, false)
         view.homeToolbar.title = null
+
+
         return view
     }
 
@@ -42,17 +55,14 @@ class HomeFragment : Fragment(), ComicAdapter.OnClickComicListener {
 
         adapterComic = ComicAdapter(this)
         layoutManager = GridLayoutManager(context, 3)
+
         rvComics.adapter = adapterComic
         rvComics.layoutManager = layoutManager
         rvComics.hasFixedSize()
 
-        viewModel.popList(0,15)
-
         viewModel.listResults.observe(viewLifecycleOwner) {
             adapterComic.addList(it)
         }
-
-        //setScroller()
     }
 
     // TODO: arrumar, está doidona!
@@ -78,17 +88,19 @@ class HomeFragment : Fragment(), ComicAdapter.OnClickComicListener {
     override fun onClickComic(position: Int) {
         var comic = viewModel.listResults.value?.get(position)
         //f (comic != null) {
-            val dateOnSale = comic!!.getDate()
-            val price = comic!!.getPrice()
-            val imgURL = comic.getImgUrl()
-            val bundleRest = Bundle().apply {
-                putString("img", imgURL)
-                putString("title", comic.title)
-                putString("description", comic.description)
-                putString("date", dateOnSale)
-                putString("price", price.toString())
-                putString("pages", comic.pageCount.toString())
-            }
+        val imgURL = comic!!.getImgUrl()
+        val descrip = comic.getDescrip()
+        val pages = if (comic.pageCount!=0) {comic.pageCount.toString()} else {"Sorry, number of pages is unavailable."}
+        val dateOnSale = comic.getDate()
+        val price = comic.getPrice()
+        val bundleRest = Bundle().apply {
+            putString("img", imgURL)
+            putString("title", comic.title)
+            putString("description", descrip)
+            putString("date", dateOnSale)
+            putString("price", price.toString())
+            putString("pages", pages)
+        }
         //}
         findNavController().navigate(R.id.action_homeFragment_to_detailsFragment, bundleRest)
     }

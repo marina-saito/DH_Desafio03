@@ -9,8 +9,9 @@ import retrofit2.http.Query
 
 // Endpoint
 interface Service {
-    @GET("characters/1009610/comics")
+    @GET("comics")
     suspend fun getComics(
+            @Query("characters") characters: Int,
             @Query("orderBy") orderBy: String,
             @Query("offset") offset: Int,
             @Query("limit") limit: Int,
