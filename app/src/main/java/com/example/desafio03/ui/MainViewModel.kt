@@ -23,7 +23,6 @@ class MainViewModel(val service: Service): ViewModel() {
         viewModelScope.launch{
             Log.i("Inicio Scope", " +  ${((System.nanoTime()-startTime)/1000000)}")
             val jsonMarvel = service.getComics(
-                1009610,
                 "issueNumber",
                 offset,
                 limit,

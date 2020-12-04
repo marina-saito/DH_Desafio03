@@ -37,7 +37,6 @@ class HomeFragment : Fragment(), ComicAdapter.OnClickComicListener {
 
         viewModel.popList(0,15)
 
-        //setScroller()
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
@@ -63,11 +62,13 @@ class HomeFragment : Fragment(), ComicAdapter.OnClickComicListener {
         viewModel.listResults.observe(viewLifecycleOwner) {
             adapterComic.addList(it)
         }
+
+        //setScroller()
     }
 
     // TODO: arrumar, está doidona!
     fun setScroller() {
-        rvComics.addOnScrollListener(object : RecyclerView.OnScrollListener(){
+        rvComics.addOnScrollListener(object : RecyclerView.OnScrollListener() {
             override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
                 super.onScrolled(recyclerView, dx, dy)
                 // dy é tipo delta y, sabe se rolou a tela
@@ -77,8 +78,13 @@ class HomeFragment : Fragment(), ComicAdapter.OnClickComicListener {
                     val vitem = layoutManager.findFirstCompletelyVisibleItemPosition() // pega primeiro item visivel na tela
                     val itens = adapterComic.itemCount
                     // Se os itens que já passaram + os itens visiveis = total de itens, fazer nova requisição dos proximos itens
-                    if (litem + vitem >= itens){
-                        viewModel.popList(itens, 12)
+                    Log.i("YYYYY", "litem: ${litem.toString()}")
+                    Log.i("YYYYY", "dy: ${dy}")
+                    if (litem + vitem >= itens + 12) {
+                        viewModel.popList(itens, 30)
+                        Log.i("YYYYY", "litem: ${litem.toString()}")
+                        Log.i("YYYYY", "vitem: ${vitem.toString()}")
+                        Log.i("YYYYY", "itens: ${itens.toString()}")
                     }
                 }
             }
@@ -87,7 +93,6 @@ class HomeFragment : Fragment(), ComicAdapter.OnClickComicListener {
 
     override fun onClickComic(position: Int) {
         var comic = viewModel.listResults.value?.get(position)
-        //f (comic != null) {
         val imgURL = comic!!.getImgUrl()
         val descrip = comic.getDescrip()
         val pages = if (comic.pageCount!=0) {comic.pageCount.toString()} else {"Sorry, number of pages is unavailable."}
@@ -101,7 +106,6 @@ class HomeFragment : Fragment(), ComicAdapter.OnClickComicListener {
             putString("price", price.toString())
             putString("pages", pages)
         }
-        //}
         findNavController().navigate(R.id.action_homeFragment_to_detailsFragment, bundleRest)
     }
 
