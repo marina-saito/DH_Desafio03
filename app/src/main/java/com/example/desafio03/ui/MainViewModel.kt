@@ -23,6 +23,7 @@ class MainViewModel(val service: Service): ViewModel() {
         viewModelScope.launch{
             Log.i("Inicio Scope", " +  ${((System.nanoTime()-startTime)/1000000)}")
             val jsonMarvel = service.getComics(
+                1009610,
                 "issueNumber",
                 offset,
                 limit,
@@ -35,7 +36,7 @@ class MainViewModel(val service: Service): ViewModel() {
             val comics = Gson().fromJson(results, object : TypeToken<List<Comic>>(){}.type) as List<Comic>
             listResults.value = comics
             Log.i("Atualizado mutable", " +  ${((System.nanoTime()-startTime)/1000000)}")
-            //Log.i("XXXXX", jsonMarvel.data.results[0].toString())
+            Log.i("XXXXX", comics[11].toString())
         }
     }
 
